@@ -80,7 +80,7 @@ form.reg-form > label {
   align-items: center;
 }
 
-input[type=text], textarea {
+input[type=text], textarea, select {
   border: solid 1px #E4E4E4;
   border-radius: 5px;
   color: #333;
@@ -126,3 +126,7 @@ input[type=text], textarea {
 /* .radio > input[type=radio] {
   display: none;
 } */
+
+.salary {
+  grid-column: span 3;
+}
