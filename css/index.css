@@ -50,3 +50,50 @@ body, html {
 .brand-name-2 {
   color: #66737E;
 }
+
+section.registration {
+  background-color: #fff;
+  box-shadow: 0 0 5px #aaa;
+  width: 60%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 30px 40px;
+}
+
+.form-header {
+  margin-bottom: 30px;
+  color: #485764;
+}
+
+/* form box */
+form.reg-form {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(5, 1fr);
+  grid-template-rows: 7;
+  row-gap: 30px;
+  column-gap: 40px;
+  color: #63707B;
+}
+
+form.reg-form > label {
+  display: flex;
+  align-items: center;
+}
+
+input[type=text], textarea {
+  border: solid 1px #E4E4E4;
+  border-radius: 5px;
+  color: #333;
+  outline: none;
+  padding: 10px 8px;
+}
+
+.name {
+  grid-column: span 5;
+}
+
+/* .radio {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+} */
