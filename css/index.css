@@ -94,9 +94,14 @@ input[type=text], textarea {
 
 .radio {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-between; */
   align-items: center;
   position: relative;
+}
+
+.radio > label,
+.checkbox > label {
+  margin-left: 10px;
 }
 
 /* .radio > label::before {
