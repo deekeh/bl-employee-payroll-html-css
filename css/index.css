@@ -69,7 +69,7 @@ section.registration {
 form.reg-form {
   display: grid;
   grid-template-columns: 1.5fr repeat(5, 1fr);
-  grid-template-rows: 7;
+  grid-template-rows: repeat(7, 1fr);
   row-gap: 30px;
   column-gap: 40px;
   color: #63707B;
@@ -129,4 +129,12 @@ input[type=text], textarea, select {
 
 .salary {
   grid-column: span 3;
+}
+
+
+.start-date {
+  grid-column: span 5;
+  display: grid;
+  column-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
 }
