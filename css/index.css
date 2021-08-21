@@ -12,6 +12,7 @@
 
 body, html {
   min-height: 100vh;
+  width: 100%;
   background-color: #F7F7F7;
 }
 
@@ -24,6 +25,11 @@ body, html {
   /* justify-content: space-evenly; */
   align-items: center;
   padding: 0 15%;
+}
+@media screen and (max-width: 576px) {
+  .navbar {
+    padding: 0 10px;
+  }
 }
 
 .logo {
@@ -58,6 +64,12 @@ section.registration {
   margin: 40px auto;
   padding: 30px 60px;
 }
+@media screen and (max-width: 576px) {
+  section.registration {
+    width: calc(100% - 10px);
+    padding: 10px 20px;
+  }
+}
 
 .form-header {
   margin-bottom: 30px;
@@ -68,15 +80,28 @@ section.registration {
 form.reg-form {
   display: grid;
   grid-template-columns: 1.5fr repeat(5, 1fr);
-  grid-template-rows: repeat(6, 1fr) 3fr;
+  /* grid-template-rows: repeat(6, 1fr) 3fr; */
   row-gap: 30px;
   column-gap: 40px;
   color: #63707B;
+}
+@media screen and (max-width: 576px) {
+  form.reg-form {
+    row-gap: 10px;
+    column-gap: 0;
+  }
 }
 
 form.reg-form > label {
   display: flex;
   align-items: baseline;
+}
+@media screen and (max-width: 576px) {
+  form.reg-form > label {
+    grid-column: span 6;
+    font-weight: 700;
+    margin-top: 10px;
+  }
 }
 
 input[type=text], textarea, select {
@@ -88,7 +113,7 @@ input[type=text], textarea, select {
 }
 
 .name {
-  grid-column: span 5;
+  grid-column: span 6;
 }
 
 .radio {
@@ -96,6 +121,12 @@ input[type=text], textarea, select {
   /* justify-content: space-between; */
   align-items: center;
   position: relative;
+}
+
+@media screen and (max-width: 576px) {
+  .radio, .checkbox {
+    grid-column: span 3;
+  }
 }
 
 .radio > label,
@@ -127,7 +158,19 @@ input[type=text], textarea, select {
 } */
 
 .salary {
-  grid-column: span 3;
+  grid-column: span 4;
+}
+
+.salary-text {
+  display: flex;
+  align-items: center !important;
+  grid-column: span 1 !important;
+  margin-top: 0 !important;
+}
+@media screen and (max-width: 576px) {
+  .salary-text {
+    margin-left: 20px;
+  }
 }
 
 
@@ -158,4 +201,8 @@ section.action button {
   color: #79838C;
   outline: none;
   padding: 10px 40px;
+  cursor: pointer;
+}
+section.action button:hover {
+  background-color: #ccc;
 }

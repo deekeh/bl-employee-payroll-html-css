@@ -122,7 +122,7 @@
       <label for="">
         Salary
       </label>
-      <select class="salary" name="salary" id="salary">
+      <!-- <select class="salary" name="salary" id="salary">
         <option value="10000">
           10,000 - 20,000
         </option>
@@ -135,9 +135,19 @@
         <option value="40000">
           40,001 - 50,000
         </option>
-      </select>
-      <div></div>
-      <div></div>
+      </select> -->
+      <input
+        type="range"
+        name="salary"
+        id="salary"
+        class="salary"
+        min="0"
+        max="100"
+        value="20"
+      />
+      <label for="salary" class="salary-text">10,200</label>
+      <!-- <div></div>
+      <div></div> -->
 
       <!-- start date -->
       <label for="">
@@ -206,7 +216,7 @@
 
       <!-- notes -->
       <label for="">Notes</label>
-      <textarea name="notes" id="notes" class="notes"></textarea>
+      <textarea name="notes" id="notes" rows="4" class="notes"></textarea>
       
       <!-- action buttons -->
       <section class="action">
