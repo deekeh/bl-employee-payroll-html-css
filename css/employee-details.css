@@ -16,6 +16,11 @@ header .right {
   display: flex;
   align-items: center;
 }
+@media screen and (max-width: 970px) {
+  header .left {
+    margin-bottom: 20px;
+  }
+}
 
 header > .left > .header {
   color: #42515F;
