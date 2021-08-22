@@ -27,7 +27,7 @@ const EmployeePayroll = class {
   
   // setters
   set name(ip) {
-    if (/^[a-zA-Z]{8,}$/.test(ip)) {
+    if (/^[A-Z][a-zA-Z]{2,}$/.test(ip)) {
       this.eName = ip;
       document.getElementById("name").classList.remove("input-error");
     }
