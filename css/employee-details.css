@@ -113,3 +113,23 @@ header .right .add-user {
   padding: 10px 15px;
   cursor: pointer;
 }
+
+/* employee details table */
+section.employee-details-section {
+  padding: 20px 15%;
+}
+
+table.employee-details {
+  text-align: left;
+  width: 100%;
+}
+
+table.employee-details thead {
+  background-color: #42515F;
+  color: #fff;
+}
+table.employee-details thead th {
+  padding: 20px 0;
+
+}
+
