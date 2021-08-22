@@ -8,6 +8,7 @@ header {
 @media screen and (max-width: 970px) {
   header {
     flex-direction: column;
+    padding: 20px 10px;
   }
 }
 
@@ -28,18 +29,23 @@ header > .left > .header {
   font-size: 28px;
   margin-right: 10px;
 }
+@media screen and (max-width: 300px) {
+  header > .left > .header {
+    font-size: 24px;
+  }
+}
 header > .left > .employee-number {
   padding: 5px;
 }
 
 header .right {
-  display: grid;
   grid-template-columns: 2fr 1fr;
   column-gap: 20px;
   row-gap: 20px;
 }
 @media screen and (max-width: 970px) {
   header .right {
+    display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
   }
@@ -56,8 +62,8 @@ header .right .search-field {
   animation: width 0.5s linear;
 }
 header .right .search-field.on {
-  /* padding-left: 20px; */
   width: 250px;
+  /* padding-left: 20px; */
 }
 header .right .search-field.on .search {
   width: 100%;
@@ -68,8 +74,14 @@ header .right .search-field.off {
 }
 @media screen and (max-width: 970px) {
   header .right .search-field.on,
-  header .right .search-field.off {
+  header .right .search-field.off,
+  header .right .search-field.on .search,
+  header .right .search-field.off .search {
     width: 100%;
+  }
+  header .right .search-field.on .search,
+  header .right .search-field.off .search {
+    padding-left: 20px;
   }
 }
 
