@@ -85,7 +85,7 @@ form.reg-form {
   column-gap: 40px;
   color: #63707B;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1200px) {
   form.reg-form {
     row-gap: 10px;
     column-gap: 0;
@@ -96,7 +96,7 @@ form.reg-form > label {
   display: flex;
   align-items: baseline;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1200px) {
   form.reg-form > label {
     grid-column: span 6;
     font-weight: 700;
@@ -113,7 +113,12 @@ input[type=text], textarea, select {
 }
 
 .name {
-  grid-column: span 6;
+  grid-column: span 5;
+}
+@media screen and (max-width: 1200px) {
+  .name {
+    grid-column: span 6;
+  }
 }
 
 .radio {
@@ -123,7 +128,7 @@ input[type=text], textarea, select {
   position: relative;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1200px) {
   .radio, .checkbox {
     grid-column: span 3;
   }
@@ -167,7 +172,7 @@ input[type=text], textarea, select {
   grid-column: span 1 !important;
   margin-top: 0 !important;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1200px) {
   .salary-text {
     margin-left: 20px;
   }
@@ -205,4 +210,10 @@ section.action button {
 }
 section.action button:hover {
   background-color: #ccc;
+}
+
+
+/* adding red border to invalid textbox */
+.input-error {
+  border: solid 1px #f00 !important;
 }
