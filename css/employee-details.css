@@ -130,6 +130,8 @@ table.employee-details thead {
 }
 table.employee-details thead th {
   padding: 20px 0;
-
 }
 
+table.employee-details tbody td {
+  padding: 4px 0;
+}
