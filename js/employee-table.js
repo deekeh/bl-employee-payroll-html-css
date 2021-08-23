@@ -2,7 +2,7 @@ const createTableRow = ({profile, name, gender, department, salary, startDate}) 
   return `
     <tr>
       <td class="e-profile">
-        <img src="../assets/Ellipse -${profile}.png" alt="User Profile">
+        <img src="../assets/Ellipse -${profile}.png" alt="User Profile" width="45">
       </td>
       <td class="e-name">
         ${name}
@@ -35,40 +35,56 @@ const createTableRow = ({profile, name, gender, department, salary, startDate}) 
   `;
 }
 
-const employeeJsonArray = [
-  {
-    profile: '1',
-    name: 'Niraj',
-    gender: 'Male',
-    department: ['Sales', 'HR'],
-    salary: 12000,
-    startDate: '12 Aug 2021',
-  },
-  {
-    profile: '3',
-    name: 'Aditya',
-    gender: 'Male',
-    department: ['Sales'],
-    salary: 14000,
-    startDate: '18 Aug 2021',
-  },
-  {
-    profile: '3',
-    name: 'Aditya',
-    gender: 'Male',
-    department: ['Sales'],
-    salary: 14000,
-    startDate: '18 Aug 2021',
-  },
-  {
-    profile: '3',
-    name: 'Aditya',
-    gender: 'Male',
-    department: ['Sales'],
-    salary: 14000,
-    startDate: '18 Aug 2021',
-  },
-];
+// const employeeJsonArray = [
+//   {
+//     profile: '1',
+//     name: 'Niraj',
+//     gender: 'Male',
+//     department: ['Sales', 'HR'],
+//     salary: 12000,
+//     startDate: '12 Aug 2021',
+//   },
+//   {
+//     profile: '3',
+//     name: 'Aditya',
+//     gender: 'Male',
+//     department: ['Sales'],
+//     salary: 14000,
+//     startDate: '18 Aug 2021',
+//   },
+//   {
+//     profile: '3',
+//     name: 'Aditya',
+//     gender: 'Male',
+//     department: ['Sales'],
+//     salary: 14000,
+//     startDate: '18 Aug 2021',
+//   },
+//   {
+//     profile: '3',
+//     name: 'Aditya',
+//     gender: 'Male',
+//     department: ['Sales'],
+//     salary: 14000,
+//     startDate: '18 Aug 2021',
+//   },
+// ];
+
+let employeeJsonArray = [];
+if (window.localStorage.getItem('empData')) {
+  JSON.parse(window.localStorage.getItem('empData')).forEach(e => {
+    employeeJsonArray.push({
+      profile: e.eProfile,
+      name: e.eName,
+      gender: e.eGender,
+      department: e.eDepartment,
+      salary: e.eSalary,
+      startDate: e.eStartDate,
+    });
+  });
+  document.getElementById("employee-number").innerHTML = JSON.parse(window.localStorage.getItem('empData')).length;
+}
+else document.getElementById("employee-number").innerHTML = 0;
 
 employeeJsonArray.forEach(employeeJson => {
   document.querySelector("#e-table-body").innerHTML += createTableRow(employeeJson);
