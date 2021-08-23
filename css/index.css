@@ -118,11 +118,18 @@ header .right .add-user {
 /* employee details table */
 section.employee-details-section {
   padding: 20px 15%;
+  overflow-x: auto;
+}
+@media screen and (max-width: 970px) {
+  section.employee-details-section {
+    padding: 20px 10px;
+  }
 }
 
 table.employee-details {
   text-align: left;
   width: 100%;
+  min-width: 700px;
 }
 
 table.employee-details thead {
@@ -135,4 +142,18 @@ table.employee-details thead th {
 
 table.employee-details tbody td {
   padding: 4px 0;
+}
+
+.department-pill {
+  display: inline-block;
+  background-color: #E9FEA5;
+  border-radius: 1000px;
+  color: #3D3D3D;
+  padding: 5px 10px;
+  margin-right: 4px;
+}
+
+table.employee-details tbody td .icon {
+  display: inline-block;
+  margin-left: 10px;
 }

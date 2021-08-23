@@ -4,53 +4,53 @@ const employees = new Array();
 const EmployeePayroll = class {
   // getters
   get name() {
-    return this.eName;
+    return this.name;
   }
   get profile() {
-    return this.eProfile;
+    return this.profile;
   }
   get gender() {
-    return this.eGender;
+    return this.gender;
   }
   get department() {
-    return this.eDepartment;
+    return this.department;
   }
   get salary() {
-    return this.eSalary;
+    return this.salary;
   }
   get startDate() {
-    return this.eStartDate;
+    return this.startDate;
   }
   get notes() {
-    return this.eNotes;
+    return this.notes;
   }
   
   // setters
   set name(ip) {
     if (/^[A-Z][a-zA-Z]{2,}$/.test(ip)) {
-      this.eName = ip;
+      this.name = ip;
       document.getElementById("name").classList.remove("input-error");
     }
     else throw new Error("name");
   }
   set profile(ip) {
-    this.eProfile = ip;
+    this.profile = ip;
   }
   set gender(ip) {
-    this.eGender = ip;
+    this.gender = ip;
   }
   set department(ip) {
-    this.eDepartment = ip;
+    this.department = ip;
   }
   set salary(ip) {
-    this.eSalary = ip;
+    this.salary = ip;
   }
   set startDate(ip) {
-    this.eStartDate = ip;
+    this.startDate = ip;
   }
   set notes(ip) {
     if (ip.length !== 0) {
-      this.eNotes = ip;
+      this.notes = ip;
       document.getElementById("notes").classList.remove("input-error");
     }
     else throw new Error("notes");
