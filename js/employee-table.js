@@ -52,6 +52,22 @@ const employeeJsonArray = [
     salary: 14000,
     startDate: '18 Aug 2021',
   },
+  {
+    profile: '3',
+    name: 'Aditya',
+    gender: 'Male',
+    department: ['Sales'],
+    salary: 14000,
+    startDate: '18 Aug 2021',
+  },
+  {
+    profile: '3',
+    name: 'Aditya',
+    gender: 'Male',
+    department: ['Sales'],
+    salary: 14000,
+    startDate: '18 Aug 2021',
+  },
 ];
 
 employeeJsonArray.forEach(employeeJson => {
