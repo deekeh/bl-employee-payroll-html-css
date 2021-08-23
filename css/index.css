@@ -1,219 +1,138 @@
-/* fonts */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
-
-/* reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1rem;
-}
-
-body, html {
-  min-height: 100vh;
-  width: 100%;
-  background-color: #F7F7F7;
-}
-
-
-/* navbar */
-.navbar {
-  background-color: #fff;
-  height: 64px;
-  display: flex;
-  /* justify-content: space-evenly; */
-  align-items: center;
-  padding: 0 15%;
-}
-@media screen and (max-width: 576px) {
-  .navbar {
-    padding: 0 10px;
-  }
-}
-
-.logo {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 1fr;
-}
-
-.logo img {
-  grid-row: span 2;
-}
-
-.brand-name-1, .brand-name-2 {
-  text-transform: uppercase;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-}
-
-.brand-name-1 {
-  color: #85A911;
-}
-
-.brand-name-2 {
-  color: #66737E;
-}
-
-section.registration {
-  background-color: #fff;
-  box-shadow: 0 0 5px #aaa;
-  width: 65%;
-  margin: 40px auto;
-  padding: 30px 60px;
-}
-@media screen and (max-width: 576px) {
-  section.registration {
-    width: calc(100% - 10px);
-    padding: 10px 20px;
-  }
-}
-
-.form-header {
-  margin-bottom: 30px;
-  color: #485764;
-}
-
-/* form box */
-form.reg-form {
-  display: grid;
-  grid-template-columns: 1.5fr repeat(5, 1fr);
-  /* grid-template-rows: repeat(6, 1fr) 3fr; */
-  row-gap: 30px;
-  column-gap: 40px;
-  color: #63707B;
-}
-@media screen and (max-width: 1200px) {
-  form.reg-form {
-    row-gap: 10px;
-    column-gap: 0;
-  }
-}
-
-form.reg-form > label {
-  display: flex;
-  align-items: baseline;
-}
-@media screen and (max-width: 1200px) {
-  form.reg-form > label {
-    grid-column: span 6;
-    font-weight: 700;
-    margin-top: 10px;
-  }
-}
-
-input[type=text], textarea, select {
-  border: solid 1px #E4E4E4;
-  border-radius: 5px;
-  color: #333;
-  outline: none;
-  padding: 10px 8px;
-}
-
-.name {
-  grid-column: span 5;
-}
-@media screen and (max-width: 1200px) {
-  .name {
-    grid-column: span 6;
-  }
-}
-
-.radio {
-  display: flex;
-  /* justify-content: space-between; */
-  align-items: center;
-  position: relative;
-}
-
-@media screen and (max-width: 1200px) {
-  .radio, .checkbox {
-    grid-column: span 3;
-  }
-}
-
-.radio > label,
-.checkbox > label {
-  margin-left: 10px;
-}
-
-/* .radio > label::before {
-  content: '';
-  height: 15px;
-  width: 15px;
-  background-color: #DEDEDE;
-  border: solid 1px #ddd;
-  border-radius: 1000px;
-} */
-
-/* .radio::after {
-  content: '';
-  height: 8px;
-  width: 8px;
-  background-color: #333;
-  position: absolute;
-  left: 12px;
-  border-radius: 1000px;
-} */
-
-/* .radio > input[type=radio] {
-  display: none;
-} */
-
-.salary {
-  grid-column: span 4;
-}
-
-.salary-text {
-  display: flex;
-  align-items: center !important;
-  grid-column: span 1 !important;
-  margin-top: 0 !important;
-}
-@media screen and (max-width: 1200px) {
-  .salary-text {
-    margin-left: 20px;
-  }
-}
-
-
-.start-date {
-  grid-column: span 5;
-  display: grid;
-  column-gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.notes {
-  resize: none;
-  grid-column: span 5;
-}
-
-section.action {
-  grid-column: span 6;
-  /* margin-top: 30px; */
+/* header */
+header {
+  padding: 20px 15%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 970px) {
+  header {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+}
+
+header .left,
+header .right {
+  display: flex;
   align-items: center;
 }
+@media screen and (max-width: 970px) {
+  header .left {
+    margin-bottom: 20px;
+  }
+}
 
-section.action button {
-  background-color: #E2E2E2;
-  border: solid 1px #C7C7C7;
-  border-radius: 4px;
-  color: #79838C;
+header > .left > .header {
+  color: #42515F;
+  font-weight: bold;
+  font-size: 28px;
+  margin-right: 10px;
+}
+@media screen and (max-width: 300px) {
+  header > .left > .header {
+    font-size: 24px;
+  }
+}
+header > .left > .employee-number {
+  padding: 5px;
+}
+
+header .right {
+  grid-template-columns: 2fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+@media screen and (max-width: 970px) {
+  header .right {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+header .right .search-field {
+  border-radius: 1000px;
+  box-shadow: 0px 1px 3px #00000029;
+  /* width: 50px; */
+  overflow-x: hidden;
+  /* margin-right: 20px; */
+  display: flex;
+  height: 100%;
+  animation: width 0.5s linear;
+}
+header .right .search-field.on {
+  width: 250px;
+  /* padding-left: 20px; */
+}
+header .right .search-field.on .search {
+  width: 100%;
+  padding-left: 20px;
+}
+header .right .search-field.off {
+  width: 50px;
+}
+@media screen and (max-width: 970px) {
+  header .right .search-field.on,
+  header .right .search-field.off,
+  header .right .search-field.on .search,
+  header .right .search-field.off .search {
+    width: 100%;
+  }
+  header .right .search-field.on .search,
+  header .right .search-field.off .search {
+    padding-left: 20px;
+  }
+}
+
+header .right .search {
+  background: #fff;
   outline: none;
-  padding: 10px 40px;
+  border: none;
+  padding: 0;
+  width: 0%;
+}
+
+header .right .search-toggle {
+  border: none;
+  background-color: #fff;
+  width: 50px;
   cursor: pointer;
 }
-section.action button:hover {
-  background-color: #ccc;
+
+.green {
+  background-color: #82A70C;
+  color: #fff;
+  border-radius: 5px;
+  
 }
 
+header .right .add-user {
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  text-decoration: none;
+}
 
-/* adding red border to invalid textbox */
-.input-error {
-  border: solid 1px #f00 !important;
+/* employee details table */
+section.employee-details-section {
+  padding: 20px 15%;
+}
+
+table.employee-details {
+  text-align: left;
+  width: 100%;
+}
+
+table.employee-details thead {
+  background-color: #42515F;
+  color: #fff;
+}
+table.employee-details thead th {
+  padding: 20px 0;
+}
+
+table.employee-details tbody td {
+  padding: 4px 0;
 }
