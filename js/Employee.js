@@ -116,18 +116,18 @@ document.getElementById("reg-form").onsubmit = function(e) {
     // saving employee to localstorage
     if (window.localStorage.getItem('empData')) {
       let storedEmployees = [];
-      storedEmployees = [...JSON.parse(window.localStorage.getItem('empData')), emp];
+      storedEmployees = [...JSON.parse(window.localStorage.getItem('empData')), {...emp, id: JSON.parse(window.localStorage.getItem('empData')).length}];
       window.localStorage.setItem('empData', [JSON.stringify(storedEmployees)]);
       console.log(JSON.parse(window.localStorage.getItem('empData')));
     }
     else {
-      window.localStorage.setItem('empData', JSON.stringify([emp]));
+      window.localStorage.setItem('empData', JSON.stringify([{...emp, id: 0}]));
       console.log(window.localStorage.getItem('empData'));
     }
     window.location.href = './';
   }
   catch (err) {
-    console.error(err.message);
+    console.error(err);
     document.querySelectorAll(err.message).forEach(el => {
       el.classList.add("input-error");
     });

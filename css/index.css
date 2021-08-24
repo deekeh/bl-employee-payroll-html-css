@@ -157,3 +157,11 @@ table.employee-details tbody td .icon {
   display: inline-block;
   margin-left: 10px;
 }
+
+/* action button */
+button.action-button {
+  border: none;
+  background-color: inherit;
+  outline: none;
+  cursor: pointer;
+}
