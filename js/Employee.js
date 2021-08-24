@@ -1,5 +1,6 @@
 // empty employee object on page-load
 // const employees = new Array();
+let EDIT = false;
 
 const EmployeePayroll = class {
   // getters
@@ -113,21 +114,30 @@ document.getElementById("reg-form").onsubmit = function(e) {
     emp.startDate = `${date} ${month} ${year}`;
     emp.notes = notes;
 
-    // saving employee to localstorage
-    if (window.localStorage.getItem('empData')) {
-      let storedEmployees = [];
-      storedEmployees = [...JSON.parse(window.localStorage.getItem('empData')), {...emp, id: JSON.parse(window.localStorage.getItem('empData')).length}];
-      window.localStorage.setItem('empData', [JSON.stringify(storedEmployees)]);
-      console.log(JSON.parse(window.localStorage.getItem('empData')));
+    if (EDIT === false) {
+      // saving employee to localstorage
+      if (window.localStorage.getItem('empData')) {
+        let storedEmployees = [];
+        storedEmployees = [...JSON.parse(window.localStorage.getItem('empData')), {...emp, id: JSON.parse(window.localStorage.getItem('empData')).length}];
+        window.localStorage.setItem('empData', [JSON.stringify(storedEmployees)]);
+        console.log(JSON.parse(window.localStorage.getItem('empData')));
+      }
+      else {
+        window.localStorage.setItem('empData', JSON.stringify([{...emp, id: 0}]));
+        console.log(window.localStorage.getItem('empData'));
+      }
     }
     else {
-      window.localStorage.setItem('empData', JSON.stringify([{...emp, id: 0}]));
-      console.log(window.localStorage.getItem('empData'));
+      // editing existing employee in localstorage
+      let empArray = JSON.parse(localStorage.getItem('empData'));
+      let newEmpArray = empArray.filter(e => e.id !== EDIT);
+      window.localStorage.setItem('empData', JSON.stringify([...newEmpArray, {...emp, id: EDIT}]));
+      // console.log(JSON.parse(localStorage.getItem('empData')));
     }
     window.location.href = './';
   }
   catch (err) {
-    console.error(err);
+    // console.error(err);
     document.querySelectorAll(err.message).forEach(el => {
       el.classList.add("input-error");
     });
@@ -154,3 +164,54 @@ document.getElementById("notes").onkeyup = function(e) {
     document.querySelector(err.message).classList.add("input-error");
   }
 };
+
+// set edit data to form if available
+window.onload = function() {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+
+  let empData;
+  if (params.edit) {
+    if(storage = localStorage.getItem('empData')) {
+      empData = JSON.parse(storage).find(e => e.id == params.edit);
+    }
+  }
+
+  // set global variable EDIT to id of employee if editing is enabled
+  if (empData !== undefined) EDIT = empData.id;
+  // console.log("Edit:", EDIT);
+  if (empData) {
+    document.getElementById("name").value = empData.eName; //set given name
+
+    // set saved profile image
+    document.querySelectorAll("input[name='profile-image']")
+    .forEach(n => {
+      if(n.value == empData.eProfile) n.checked = true;
+    });
+    
+    // set saved gender
+    document.querySelectorAll("input[name='gender']")
+    .forEach(n => {
+      if(n.value == empData.eGender) n.checked = true;
+    });
+    
+    // set saved departments
+    document.querySelectorAll("input[name='department']")
+    .forEach(n => {
+      if(empData.eDepartment.indexOf(n.value) !== -1) n.checked = true;
+    });
+
+    // set saved salary
+    document.getElementById("salary").value = empData.eSalary;
+    document.getElementById("salary-text").innerHTML = empData.eSalary;
+
+    // set saved start-date
+    document.getElementById("year").value = empData.eStartDate.split(' ')[2];
+    document.getElementById("month").value = empData.eStartDate.split(' ')[1];
+    document.getElementById("day").value = empData.eStartDate.split(' ')[0];
+
+    // set saved notes
+    document.getElementById("notes").value = empData.eNotes;
+  }
+
+}
