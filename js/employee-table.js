@@ -70,22 +70,28 @@ const createTableRow = ({profile, name, gender, department, salary, startDate}) 
 //   },
 // ];
 
-let employeeJsonArray = [];
-if (window.localStorage.getItem('empData')) {
-  JSON.parse(window.localStorage.getItem('empData')).forEach(e => {
-    employeeJsonArray.push({
-      profile: e.eProfile,
-      name: e.eName,
-      gender: e.eGender,
-      department: e.eDepartment,
-      salary: e.eSalary,
-      startDate: e.eStartDate,
+function populateTable() {
+  let employeeJsonArray = [];
+  if (window.localStorage.getItem('empData')) {
+    JSON.parse(window.localStorage.getItem('empData')).forEach(e => {
+      employeeJsonArray.push({
+        profile: e.eProfile,
+        name: e.eName,
+        gender: e.eGender,
+        department: e.eDepartment,
+        salary: e.eSalary,
+        startDate: e.eStartDate,
+      });
     });
+    document.getElementById("employee-number").innerHTML = JSON.parse(window.localStorage.getItem('empData')).length;
+  }
+  else document.getElementById("employee-number").innerHTML = 0;
+  
+  employeeJsonArray.forEach(employeeJson => {
+    document.querySelector("#e-table-body").innerHTML += createTableRow(employeeJson);
   });
-  document.getElementById("employee-number").innerHTML = JSON.parse(window.localStorage.getItem('empData')).length;
 }
-else document.getElementById("employee-number").innerHTML = 0;
 
-employeeJsonArray.forEach(employeeJson => {
-  document.querySelector("#e-table-body").innerHTML += createTableRow(employeeJson);
-});
+window.onload = function() {
+  populateTable();
+}

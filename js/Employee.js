@@ -31,7 +31,7 @@ const EmployeePayroll = class {
       this.eName = ip;
       document.getElementById("name").classList.remove("input-error");
     }
-    else throw new Error("name");
+    else throw new Error("#name");
   }
   set profile(ip) {
     this.eProfile = ip;
@@ -46,14 +46,25 @@ const EmployeePayroll = class {
     this.eSalary = ip;
   }
   set startDate(ip) {
-    this.eStartDate = ip;
+    // const ipDate = new Date(ip);
+    // const timeElapsed = Date.now();
+    // let daysDifference = (timeElapsed - ipDate) / (1000 * 60 * 60 * 24);
+  
+    // if (daysDifference <= 30) {
+    //   throw new Error(".startDate");
+    // } else {
+    //   document.querySelectorAll(".startDate").forEach(el => {
+    //     el.classList.remove("input-error");
+    //   });
+      this.eStartDate = ip;
+    // }
   }
   set notes(ip) {
     if (ip.length !== 0) {
       this.eNotes = ip;
       document.getElementById("notes").classList.remove("input-error");
     }
-    else throw new Error("notes");
+    else throw new Error("#notes");
   }
 }
 const emp = new EmployeePayroll();
@@ -117,7 +128,9 @@ document.getElementById("reg-form").onsubmit = function(e) {
   }
   catch (err) {
     console.error(err.message);
-    document.getElementById(err.message).classList.add("input-error");
+    document.querySelectorAll(err.message).forEach(el => {
+      el.classList.add("input-error");
+    });
   }
   // finally {
   //   console.log(employees);
@@ -130,7 +143,7 @@ document.getElementById("name").onkeyup = function(e) {
     emp.name = e.target.value;
   }
   catch (err) {
-    document.getElementById(err.message).classList.add("input-error");
+    document.querySelector(err.message).classList.add("input-error");
   }
 };
 document.getElementById("notes").onkeyup = function(e) {
@@ -138,6 +151,6 @@ document.getElementById("notes").onkeyup = function(e) {
     emp.notes = e.target.value;
   }
   catch (err) {
-    document.getElementById(err.message).classList.add("input-error");
+    document.querySelector(err.message).classList.add("input-error");
   }
 };
