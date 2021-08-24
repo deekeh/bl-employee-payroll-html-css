@@ -1,4 +1,4 @@
-const createTableRow = ({profile, name, gender, department, salary, startDate}) => {
+const createTableRow = ({profile, name, gender, department, salary, startDate, id}) => {
   return `
     <tr>
       <td class="e-profile">
@@ -20,7 +20,7 @@ const createTableRow = ({profile, name, gender, department, salary, startDate}) 
         ${startDate}
       </td>
       <td class="e-actions">
-        <button class="action-button" type="button">
+        <button onclick="deleteEmployee(${id})" class="action-button" type="button">
           <span class="delete icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#658292" class="bi bi-trash-fill" viewBox="0 0 16 16">
               <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
@@ -40,41 +40,6 @@ const createTableRow = ({profile, name, gender, department, salary, startDate}) 
   `;
 }
 
-// const employeeJsonArray = [
-//   {
-//     profile: '1',
-//     name: 'Niraj',
-//     gender: 'Male',
-//     department: ['Sales', 'HR'],
-//     salary: 12000,
-//     startDate: '12 Aug 2021',
-//   },
-//   {
-//     profile: '3',
-//     name: 'Aditya',
-//     gender: 'Male',
-//     department: ['Sales'],
-//     salary: 14000,
-//     startDate: '18 Aug 2021',
-//   },
-//   {
-//     profile: '3',
-//     name: 'Aditya',
-//     gender: 'Male',
-//     department: ['Sales'],
-//     salary: 14000,
-//     startDate: '18 Aug 2021',
-//   },
-//   {
-//     profile: '3',
-//     name: 'Aditya',
-//     gender: 'Male',
-//     department: ['Sales'],
-//     salary: 14000,
-//     startDate: '18 Aug 2021',
-//   },
-// ];
-
 function populateTable() {
   let employeeJsonArray = [];
   if (window.localStorage.getItem('empData')) {
@@ -86,12 +51,14 @@ function populateTable() {
         department: e.eDepartment,
         salary: e.eSalary,
         startDate: e.eStartDate,
+        id: e.id,
       });
     });
     document.getElementById("employee-number").innerHTML = JSON.parse(window.localStorage.getItem('empData')).length;
   }
   else document.getElementById("employee-number").innerHTML = 0;
   
+  document.querySelector("#e-table-body").innerHTML = '';
   employeeJsonArray.forEach(employeeJson => {
     document.querySelector("#e-table-body").innerHTML += createTableRow(employeeJson);
   });
@@ -99,4 +66,12 @@ function populateTable() {
 
 window.onload = function() {
   populateTable();
+}
+
+function deleteEmployee(id) {
+  let employees = JSON.parse(window.localStorage.getItem('empData'));
+  let newEmployees = employees.filter(e => e.id !== id); // return all objects except the object to be deleted
+  console.log(newEmployees);
+  window.localStorage.setItem('empData', JSON.stringify(newEmployees));
+  populateTable(); // recreate the table
 }
