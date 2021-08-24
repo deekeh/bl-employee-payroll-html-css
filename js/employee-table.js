@@ -42,6 +42,7 @@ const createTableRow = ({profile, name, gender, department, salary, startDate, i
 
 function populateTable() {
   let employeeJsonArray = [];
+  // save all employees to employeJsonArray
   if (window.localStorage.getItem('empData')) {
     JSON.parse(window.localStorage.getItem('empData')).forEach(e => {
       employeeJsonArray.push({
@@ -54,10 +55,12 @@ function populateTable() {
         id: e.id,
       });
     });
+    // display number of employees
     document.getElementById("employee-number").innerHTML = JSON.parse(window.localStorage.getItem('empData')).length;
   }
   else document.getElementById("employee-number").innerHTML = 0;
-  
+
+  // display employees in table by creating new rows
   document.querySelector("#e-table-body").innerHTML = '';
   employeeJsonArray.forEach(employeeJson => {
     document.querySelector("#e-table-body").innerHTML += createTableRow(employeeJson);
@@ -68,6 +71,7 @@ window.onload = function() {
   populateTable();
 }
 
+// delete a particular employee using id
 function deleteEmployee(id) {
   let employees = JSON.parse(window.localStorage.getItem('empData'));
   let newEmployees = employees.filter(e => e.id !== id); // return all objects except the object to be deleted
@@ -76,6 +80,7 @@ function deleteEmployee(id) {
   populateTable(); // recreate the table
 }
 
+// redirecting to registration page with employee id in query string to edit particular employee details
 function editEmployee(id) {
   window.location.href = "./employee-registration.html?edit="+id;
 }

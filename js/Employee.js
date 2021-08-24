@@ -106,6 +106,7 @@ document.getElementById("reg-form").onsubmit = function(e) {
   });
 
   try {
+    // try to save employee details to emp object
     emp.name = name;
     emp.profile = profileImage;
     emp.gender = gender;
@@ -131,17 +132,24 @@ document.getElementById("reg-form").onsubmit = function(e) {
       // editing existing employee in localstorage
       let empArray = JSON.parse(localStorage.getItem('empData'));
       let newEmpArray = empArray.filter(e => e.id !== EDIT);
-      window.localStorage.setItem('empData', JSON.stringify([...newEmpArray, {...emp, id: EDIT}]));
+      window.localStorage.setItem('empData', JSON.stringify([...newEmpArray, {...emp, id: EDIT}])); // saving filtered array and edited employee object to localstorage
+
+      // uncomment to log the new local storage
       // console.log(JSON.parse(localStorage.getItem('empData')));
     }
     window.location.href = './';
   }
   catch (err) {
+    // uncomment to log error
     // console.error(err);
+    
+    // handle error by giving red border to erroneous input field
     document.querySelectorAll(err.message).forEach(el => {
       el.classList.add("input-error");
     });
   }
+
+  // older code to log saved employees in array
   // finally {
   //   console.log(employees);
   // }
@@ -179,7 +187,10 @@ window.onload = function() {
 
   // set global variable EDIT to id of employee if editing is enabled
   if (empData !== undefined) EDIT = empData.id;
+
+  // uncomment to log the value of global variable EDIT
   // console.log("Edit:", EDIT);
+  
   if (empData) {
     document.getElementById("name").value = empData.eName; //set given name
 
@@ -213,5 +224,4 @@ window.onload = function() {
     // set saved notes
     document.getElementById("notes").value = empData.eNotes;
   }
-
 }
