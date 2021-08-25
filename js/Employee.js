@@ -119,12 +119,12 @@ document.getElementById("reg-form").onsubmit = function(e) {
       // saving employee to localstorage
       if (window.localStorage.getItem('empData')) {
         let storedEmployees = [];
-        storedEmployees = [...JSON.parse(window.localStorage.getItem('empData')), {...emp, id: JSON.parse(window.localStorage.getItem('empData')).length}];
+        storedEmployees = [...JSON.parse(window.localStorage.getItem('empData')), {...emp, id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)}];
         window.localStorage.setItem('empData', [JSON.stringify(storedEmployees)]);
         console.log(JSON.parse(window.localStorage.getItem('empData')));
       }
       else {
-        window.localStorage.setItem('empData', JSON.stringify([{...emp, id: 0}]));
+        window.localStorage.setItem('empData', JSON.stringify([{...emp, id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)}]));
         console.log(window.localStorage.getItem('empData'));
       }
     }
