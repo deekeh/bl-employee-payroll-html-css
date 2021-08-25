@@ -141,11 +141,6 @@ document.getElementById("reg-form").onsubmit = function(e) {
       el.classList.add("input-error");
     });
   }
-
-  // older code to log saved employees in array
-  // finally {
-  //   console.log(employees);
-  // }
 }
 
 // listening to key-presses and checking input on change
