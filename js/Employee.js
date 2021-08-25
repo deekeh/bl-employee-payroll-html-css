@@ -1,5 +1,4 @@
-// empty employee object on page-load
-// const employees = new Array();
+// setting global variable EDIT to false to make the form behave as new-registration form by default
 let EDIT = false;
 
 const EmployeePayroll = class {
@@ -47,18 +46,12 @@ const EmployeePayroll = class {
     this.eSalary = ip;
   }
   set startDate(ip) {
-    // const ipDate = new Date(ip);
-    // const timeElapsed = Date.now();
-    // let daysDifference = (timeElapsed - ipDate) / (1000 * 60 * 60 * 24);
-  
-    // if (daysDifference <= 30) {
-    //   throw new Error(".startDate");
-    // } else {
-    //   document.querySelectorAll(".startDate").forEach(el => {
-    //     el.classList.remove("input-error");
-    //   });
+    const dayDifference = (new Date() - new Date(ip)) / (60*60*24*1000);
+    if (dayDifference < 0 || dayDifference >= 30) throw new Error(".startDate");
+    else {
+      document.querySelectorAll('.startDate').forEach(el => el.classList.remove('input-error'));
       this.eStartDate = ip;
-    // }
+    }
   }
   set notes(ip) {
     if (ip.length !== 0) {
@@ -141,7 +134,7 @@ document.getElementById("reg-form").onsubmit = function(e) {
   }
   catch (err) {
     // uncomment to log error
-    // console.error(err);
+    console.error(err);
     
     // handle error by giving red border to erroneous input field
     document.querySelectorAll(err.message).forEach(el => {
@@ -224,4 +217,11 @@ window.onload = function() {
     // set saved notes
     document.getElementById("notes").value = empData.eNotes;
   }
+}
+
+// remove red error borders from input fields on form reset
+document.getElementById("reg-form").onreset = function() {
+  document.getElementById('name').className = 'name';
+  document.querySelectorAll('.startDate').forEach(el => el.classList.remove('input-error'));
+  document.getElementById("notes").classList.remove("input-error");
 }
