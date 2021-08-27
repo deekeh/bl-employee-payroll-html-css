@@ -1,3 +1,12 @@
+// header
+// document.querySelector('.search-toggle').addEventListener('click', function() {
+//   this.parentElement.classList.toggle('off');
+//   this.parentElement.classList.toggle('on');
+
+//   this.parentElement.querySelector('.search').value = '';
+// });
+
+// table
 const createTableRow = ({profile, name, gender, department, salary, startDate, id}) => {
   return `
     <tr>
@@ -40,7 +49,9 @@ const createTableRow = ({profile, name, gender, department, salary, startDate, i
   `;
 }
 
-function populateTable() {
+const displayEmployeeCount = (n) => {document.getElementById("employee-number").innerHTML = n;};
+
+const getEmployees = () => {
   let employeeJsonArray = [];
   // save all employees to employeJsonArray
   if (window.localStorage.getItem('empData')) {
@@ -56,19 +67,25 @@ function populateTable() {
       });
     });
     // display number of employees
-    document.getElementById("employee-number").innerHTML = JSON.parse(window.localStorage.getItem('empData')).length;
+    // displayEmployeeCount(JSON.parse(window.localStorage.getItem('empData')).length);
   }
-  else document.getElementById("employee-number").innerHTML = 0;
+  // else document.getElementById("employee-number").innerHTML = 0;
+  return employeeJsonArray;
+};
 
-  // display employees in table by creating new rows
+// display employees in table by creating new rows
+const populateTable = (employeeJsonArray) => {
   document.querySelector("#e-table-body").innerHTML = '';
   employeeJsonArray.forEach(employeeJson => {
     document.querySelector("#e-table-body").innerHTML += createTableRow(employeeJson);
   });
 }
 
-window.onload = function() {
-  populateTable();
+// load employees on page load
+window.onload = () => {
+  const employees = getEmployees();
+  displayEmployeeCount(employees.length);
+  populateTable(employees);
 }
 
 // delete a particular employee using id
