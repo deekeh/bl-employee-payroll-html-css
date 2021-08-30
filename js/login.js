@@ -1,3 +1,5 @@
+let redirectUrl = './';
+
 const checkCredentials = (phone, password) => {
   return new Promise((resolve, reject) => {
     if (!phone) reject("phone_required");
@@ -42,8 +44,9 @@ document
           el.classList.remove("error");
           document.querySelector(".login-container").classList.remove("emerge");
           document.querySelector(".login-container").classList.add("retract");
+          window.localStorage.setItem('loginkey', "true");
           setTimeout(function() {
-            window.location.href = './';
+            window.location.href = redirectUrl;
           }, 700);
         });
       }
@@ -78,3 +81,12 @@ document
       }
     }
   });
+
+// check if the user is already logged in on page load and redirect to home if so
+window.onload = function() {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+  redirectUrl = (params.redirect || './');
+  console.log(redirectUrl)
+  if (window.localStorage.getItem('loginkey')) window.location.href = redirectUrl;
+}

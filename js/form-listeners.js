@@ -80,6 +80,11 @@ document.getElementById("notes").onkeyup = function (e) {
 
 // set edit data to form if available
 window.onload = async function () {
+  if (!window.localStorage.getItem("loginkey"))
+    window.location.href = `./login.html?redirect=${encodeURI(
+      window.location.href
+    )}`;
+
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());
 

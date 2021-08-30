@@ -88,6 +88,10 @@ export async function populateTable() {
 }
 
 window.onload = function () {
+  if (!window.localStorage.getItem("loginkey"))
+    window.location.href = `./login.html?redirect=${encodeURI(
+      window.location.href
+    )}`;
   populateTable();
 };
 
