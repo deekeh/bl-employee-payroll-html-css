@@ -1,0 +1,12 @@
+.submit {
+  cursor: pointer;
+}
+
+.already-registered {
+  text-decoration: none;
+  color: #7f53ac;
+  font-size: 0.7rem;
+}
+.already-registered:hover {
+  text-decoration: underline;
+}
