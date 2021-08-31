@@ -1,25 +1,38 @@
+import { submitRequest } from "./service/server-fetch.js";
+
 let redirectUrl = './';
 
 const checkCredentials = (phone, password) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     if (!phone) reject("phone_required");
     if (!password) reject("password_required");
     if (!/^[9][1][ ][6789][\d]{9}$/.test(phone)) reject ("phone_format")
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:3000/credentials", true);
-    xhr.send();
+    try {
+      const userDetails = await submitRequest("GET", "credentials/");
+      // let credentials = JSON.parse(userDetails;
+      if (phone == userDetails.phone && password == userDetails.password)
+      resolve(true);
+      else reject("input_mismatch");
+    }
+    catch (err) {
+      console.error(err);
+    }
 
-    xhr.onreadystatechange = function () {
-      if (this.readyState == 4) {
-        console.log(this.readyState);
-        let credentials = JSON.parse(this.responseText);
-        console.log(credentials);
-        if (phone == credentials.phone && password == credentials.password)
-          resolve(true);
-        else reject("input_mismatch");
-      }
-    };
+    // const xhr = new XMLHttpRequest();
+    // xhr.open("GET", "http://localhost:3000/credentials", true);
+    // xhr.send();
+
+    // xhr.onreadystatechange = function () {
+    //   if (this.readyState == 4) {
+    //     console.log(this.readyState);
+    //     let credentials = JSON.parse(this.responseText);
+    //     console.log(credentials);
+    //     if (phone == credentials.phone && password == credentials.password)
+    //       resolve(true);
+    //     else reject("input_mismatch");
+    //   }
+    // };
   });
 };
 
