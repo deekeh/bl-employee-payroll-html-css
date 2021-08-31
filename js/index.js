@@ -52,11 +52,11 @@ const createTableRow = ({
   `;
 };
 
-export async function populateTable() {
+export async function populateTable(eName = "") {
   let employeeJsonArray = [];
   // save all employees to employeJsonArray
   try {
-    const data = await submitRequest("GET", "employees/");
+    const data = await submitRequest("GET", `employees/?eName_like=${eName}`);
 
     // uncomment to log updated data
     // console.log(data);
@@ -105,6 +105,25 @@ window.deleteEmployee = async (id) => {
     console.error(err);
   }
 };
+
+// toggle search button
+let searchSet = false;
+document.querySelector(".search-toggle").addEventListener("click", function() {
+  this.parentElement.classList.toggle("off");
+  this.parentElement.classList.toggle("on");
+  document.getElementById("search").focus();
+  document.getElementById("search").value = "";
+  if (searchSet) {
+    populateTable();
+  }
+  searchSet = !searchSet;
+});
+
+document.getElementById("search").addEventListener("input", function(e) {
+  // stop taking input on big screens if search functionality is set
+  if (!searchSet && window.matchMedia("(min-width: 970px)").matches) return false;
+  populateTable(e.target.value);
+});
 
 // https://stackoverflow.com/a/44591205
 // redirecting to registration page with employee id in query string to edit particular employee details
