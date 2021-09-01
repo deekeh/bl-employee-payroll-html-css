@@ -1,13 +1,15 @@
 /* navbar */
 .navbar {
   background-color: #fff;
-  height: 64px;
+  min-height: 64px;
   display: flex;
+  gap: 4px;
   justify-content: space-between;
   align-items: center;
   padding: 0 15%;
+  flex-wrap: wrap;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 720px) {
   .navbar {
     padding: 0 10px;
   }
@@ -36,6 +38,73 @@
 
 .brand-name-2 {
   color: #66737E;
+}
+
+
+/* admin details */
+.account {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.user {
+  cursor: pointer;
+  position: relative;
+  width: 250px;
+}
+@media screen and (max-width: 670px) {
+  .user {
+    width: 200px;
+  }
+}
+.user > * {
+  width: 100%;
+}
+
+.user .user-name {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.username, .user-detail {
+  /* padding: 10px; */
+  border: solid 4px #66737E;
+  border-radius: 5px;
+}
+
+.user-detail {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  /* background-color: #f00; */
+  background: #fff;
+  display: inline-block;
+  transition: visibility 0s, opacity 0.2s linear;
+  box-shadow: 0 0 4px #333;
+}
+.user .user-detail {
+  visibility: hidden;
+  opacity: 0;
+}
+.user.on .user-detail {
+  visibility: visible;
+  opacity: 1;
+}
+
+.user > .username {
+  padding: 6px;
+  font-size: 0.8rem;
+}
+
+.user .user-detail > div {
+  margin: 6px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.8rem;
 }
 
 .logout {

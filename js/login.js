@@ -11,7 +11,7 @@ const checkCredentials = (phone, password) => {
     try {
       const userDetails = await submitRequest("GET", `credentials/?phone=${phone}&password=${password}`);
       if (userDetails.length !== 0)
-        resolve(true);
+        resolve(userDetails[0]);
       else reject("input_mismatch");
     } catch (err) {
       console.error(err);
@@ -40,7 +40,7 @@ document
           el.classList.remove("error");
           document.querySelector(".login-container").classList.remove("emerge");
           document.querySelector(".login-container").classList.add("retract");
-          window.localStorage.setItem("loginkey", "true");
+          window.localStorage.setItem("loginkey", JSON.stringify(checkResult));
           setTimeout(function () {
             window.location.href = redirectUrl;
           }, 700);
