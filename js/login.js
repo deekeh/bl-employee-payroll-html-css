@@ -9,9 +9,11 @@ const checkCredentials = (phone, password) => {
     if (!/^[9][1][ ][6789][\d]{9}$/.test(phone)) reject("phone_format");
 
     try {
-      const userDetails = await submitRequest("GET", `credentials/?phone=${phone}&password=${password}`);
-      if (userDetails.length !== 0)
-        resolve(userDetails[0]);
+      const userDetails = await submitRequest(
+        "GET",
+        `credentials/?phone=${phone}&password=${password}`
+      );
+      if (userDetails.length !== 0) resolve(userDetails[0]);
       else reject("input_mismatch");
     } catch (err) {
       console.error(err);

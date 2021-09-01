@@ -24,7 +24,7 @@ header .right {
 }
 
 header > .left > .header {
-  color: #42515F;
+  color: #42515f;
   font-weight: bold;
   font-size: 28px;
   margin-right: 10px;
@@ -115,10 +115,9 @@ header .right .search-toggle {
 }
 
 .green {
-  background-color: #82A70C;
+  background-color: #82a70c;
   color: #fff;
   border-radius: 5px;
-  
 }
 
 header .right .add-user {
@@ -147,7 +146,7 @@ table.employee-details {
 }
 
 table.employee-details thead {
-  background-color: #42515F;
+  background-color: #42515f;
   color: #fff;
 }
 table.employee-details thead th {
@@ -160,9 +159,9 @@ table.employee-details tbody td {
 
 .department-pill {
   display: inline-block;
-  background-color: #E9FEA5;
+  background-color: #e9fea5;
   border-radius: 1000px;
-  color: #3D3D3D;
+  color: #3d3d3d;
   padding: 5px 10px;
   margin-right: 4px;
 }

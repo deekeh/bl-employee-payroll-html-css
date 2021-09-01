@@ -1,4 +1,4 @@
-import {siteurl} from './site-properties.js';
+import { siteurl } from "./site-properties.js";
 
 export const submitRequest = (type, url, data = null, isAsync = true) => {
   return new Promise((resolve, reject) => {

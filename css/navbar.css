@@ -25,7 +25,8 @@
   grid-row: span 2;
 }
 
-.brand-name-1, .brand-name-2 {
+.brand-name-1,
+.brand-name-2 {
   text-transform: uppercase;
   font-weight: 700;
   display: flex;
@@ -33,13 +34,12 @@
 }
 
 .brand-name-1 {
-  color: #85A911;
+  color: #85a911;
 }
 
 .brand-name-2 {
-  color: #66737E;
+  color: #66737e;
 }
-
 
 /* admin details */
 .account {
@@ -68,9 +68,10 @@
   gap: 15px;
 }
 
-.username, .user-detail {
+.username,
+.user-detail {
   /* padding: 10px; */
-  border: solid 4px #66737E;
+  border: solid 4px #66737e;
   border-radius: 5px;
 }
 
@@ -108,7 +109,7 @@
 }
 
 .logout {
-  background-color: #85A911;
+  background-color: #85a911;
   border: none;
   border-radius: 5px;
   color: #fff;

@@ -1,4 +1,4 @@
-import {submitRequest} from './service/server-fetch.js';
+import { submitRequest } from "./service/server-fetch.js";
 
 document.querySelector(".get").addEventListener("click", async function () {
   try {

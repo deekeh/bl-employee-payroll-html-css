@@ -24,7 +24,7 @@ form.reg-form {
   /* grid-template-rows: repeat(6, 1fr) 3fr; */
   row-gap: 30px;
   column-gap: 40px;
-  color: #63707B;
+  color: #63707b;
 }
 @media screen and (max-width: 1200px) {
   form.reg-form {
@@ -45,8 +45,10 @@ form.reg-form > label {
   }
 }
 
-input[type=text], textarea, select {
-  border: solid 1px #E4E4E4;
+input[type="text"],
+textarea,
+select {
+  border: solid 1px #e4e4e4;
   border-radius: 5px;
   color: #333;
   outline: none;
@@ -70,7 +72,8 @@ input[type=text], textarea, select {
 }
 
 @media screen and (max-width: 1200px) {
-  .radio, .checkbox {
+  .radio,
+  .checkbox {
     grid-column: span 3;
   }
 }
@@ -119,7 +122,6 @@ input[type=text], textarea, select {
   }
 }
 
-
 .start-date {
   grid-column: span 5;
   display: grid;
@@ -141,10 +143,10 @@ section.action {
 }
 
 section.action button {
-  background-color: #E2E2E2;
-  border: solid 1px #C7C7C7;
+  background-color: #e2e2e2;
+  border: solid 1px #c7c7c7;
   border-radius: 4px;
-  color: #79838C;
+  color: #79838c;
   outline: none;
   padding: 10px 40px;
   cursor: pointer;
@@ -152,7 +154,6 @@ section.action button {
 section.action button:hover {
   background-color: #ccc;
 }
-
 
 /* adding red border to invalid textbox */
 .input-error {

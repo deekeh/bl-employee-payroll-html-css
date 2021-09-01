@@ -21,14 +21,13 @@ export const EmployeePayroll = class {
   get notes() {
     return this.eNotes;
   }
-  
+
   // setters
   set name(ip) {
     if (/^[A-Z][a-zA-Z]{2,}$/.test(ip)) {
       this.eName = ip;
       document.getElementById("name").classList.remove("input-error");
-    }
-    else throw new Error("#name");
+    } else throw new Error("#name");
   }
   set profile(ip) {
     this.eProfile = ip;
@@ -43,10 +42,12 @@ export const EmployeePayroll = class {
     this.eSalary = ip;
   }
   set startDate(ip) {
-    const dayDifference = (new Date() - new Date(ip)) / (60*60*24*1000);
+    const dayDifference = (new Date() - new Date(ip)) / (60 * 60 * 24 * 1000);
     if (dayDifference < 0 || dayDifference >= 30) throw new Error(".startDate");
     else {
-      document.querySelectorAll('.startDate').forEach(el => el.classList.remove('input-error'));
+      document
+        .querySelectorAll(".startDate")
+        .forEach((el) => el.classList.remove("input-error"));
       this.eStartDate = ip;
     }
   }
@@ -54,7 +55,6 @@ export const EmployeePayroll = class {
     if (ip.length !== 0) {
       this.eNotes = ip;
       document.getElementById("notes").classList.remove("input-error");
-    }
-    else throw new Error("#notes");
+    } else throw new Error("#notes");
   }
-}
+};

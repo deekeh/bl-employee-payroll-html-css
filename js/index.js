@@ -56,8 +56,7 @@ async function setTotalEmployeeCount() {
   try {
     const data = await submitRequest("GET", `employees/`);
     document.getElementById("employee-number").innerHTML = data.length;
-  }
-  catch(err) {
+  } catch (err) {
     document.getElementById("employee-number").innerHTML = 0;
     console.error(err);
   }
@@ -120,7 +119,7 @@ window.deleteEmployee = async (id) => {
 
 // toggle search button
 let searchSet = false;
-document.querySelector(".search-toggle").addEventListener("click", function() {
+document.querySelector(".search-toggle").addEventListener("click", function () {
   this.parentElement.classList.toggle("off");
   this.parentElement.classList.toggle("on");
   document.getElementById("search").focus();
@@ -131,9 +130,10 @@ document.querySelector(".search-toggle").addEventListener("click", function() {
   searchSet = !searchSet;
 });
 
-document.getElementById("search").addEventListener("input", function(e) {
+document.getElementById("search").addEventListener("input", function (e) {
   // stop taking input on big screens if search functionality is set
-  if (!searchSet && window.matchMedia("(min-width: 970px)").matches) return false;
+  if (!searchSet && window.matchMedia("(min-width: 970px)").matches)
+    return false;
   populateTable(e.target.value);
 });
 
