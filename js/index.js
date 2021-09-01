@@ -52,6 +52,17 @@ const createTableRow = ({
   `;
 };
 
+async function setTotalEmployeeCount() {
+  try {
+    const data = await submitRequest("GET", `employees/`);
+    document.getElementById("employee-number").innerHTML = data.length;
+  }
+  catch(err) {
+    document.getElementById("employee-number").innerHTML = 0;
+    console.error(err);
+  }
+}
+
 export async function populateTable(eName = "") {
   let employeeJsonArray = [];
   // save all employees to employeJsonArray
@@ -73,8 +84,9 @@ export async function populateTable(eName = "") {
       });
     });
     // display number of employees
-    document.getElementById("employee-number").innerHTML =
-      employeeJsonArray.length;
+    // document.getElementById("employee-number").innerHTML =
+    //   employeeJsonArray.length;
+    await setTotalEmployeeCount();
   } catch (err) {
     console.log(err);
   } finally {
