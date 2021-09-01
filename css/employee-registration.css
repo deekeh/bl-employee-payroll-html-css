@@ -1,3 +1,31 @@
+main.main-section {
+  min-height: calc(100vh - 64px);
+}
+.emerge {
+  animation: emerge 0.7s ease-in;
+}
+.retract {
+  animation: retract 0.8s ease-out;
+}
+
+@keyframes emerge {
+  0% {
+    clip-path: circle(0% at 0 0);
+  }
+  100% {
+    clip-path: circle(141.45% at 0 0);
+  }
+}
+@keyframes retract {
+  0% {
+    clip-path: circle(141.45% at 0 0);
+  }
+  100% {
+    clip-path: circle(0% at 0 0);
+  }
+}
+
+
 section.registration {
   background-color: #fff;
   box-shadow: 0 0 5px #aaa;

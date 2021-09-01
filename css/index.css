@@ -12,6 +12,34 @@ header {
   }
 }
 
+main.main-section {
+  min-height: calc(100vh - 64px);
+}
+
+main.emerge {
+  animation: emerge 0.7s ease-in;
+}
+main.retract {
+  animation: retract 0.7s ease-out;
+}
+@keyframes emerge {
+  0% {
+    clip-path: circle(0% at 0 0);
+  }
+  100% {
+    clip-path: circle(141.45% at 0 0);
+  }
+}
+@keyframes retract {
+  0% {
+    clip-path: circle(141.45% at 0 0);
+  }
+  100% {
+    clip-path: circle(0% at 0 0);
+  }
+}
+
+
 header .left,
 header .right {
   display: flex;

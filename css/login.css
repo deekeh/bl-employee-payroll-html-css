@@ -13,7 +13,7 @@
   background-color: var(--gradient-fallback);
   background-image: var(--gradient-color);
   width: 100%;
-  height: calc(100vh - 64px);
+  height: 100vh;
 
   display: flex;
   justify-content: center;
@@ -23,7 +23,7 @@
   animation: emerge 0.7s ease-in;
 }
 .retract {
-  animation: retract 0.7s ease-out;
+  animation: retract 0.8s ease-out;
 }
 
 @keyframes emerge {
