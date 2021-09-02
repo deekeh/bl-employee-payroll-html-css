@@ -71,7 +71,7 @@
 .username,
 .user-detail {
   /* padding: 10px; */
-  border: solid 4px #66737e;
+  border: solid 1px #66737e;
   border-radius: 5px;
 }
 
@@ -84,7 +84,7 @@
   background: #fff;
   display: inline-block;
   transition: visibility 0s, opacity 0.2s linear;
-  box-shadow: 0 0 4px #333;
+  box-shadow: 0 0 2px #333;
 }
 .user .user-detail {
   visibility: hidden;
@@ -96,12 +96,12 @@
 }
 
 .user > .username {
-  padding: 6px;
+  padding: 9px;
   font-size: 0.8rem;
 }
 
 .user .user-detail > div {
-  margin: 6px;
+  margin: 9px;
   display: flex;
   align-items: center;
   gap: 15px;
